@@ -1,0 +1,68 @@
+1. TypeScript:
+  varibales, data types, functions, arrow functions, classes, interfaces,
+  generics, imports and exports.
+
+=============================================================================
+
+2. Angular architecture:
+  Components, templates, decorators, standalone components, application
+  bootstrap and project structure.
+
+=============================================================================
+
+3. Data Binding:
+  Interpolation {{}}, property binding [], even binding [{}].
+
+=============================================================================
+
+4. Directives and Control flow:
+  Built-in @if, @else, @for, @switch and attribute directives such as ngClass.
+
+=============================================================================
+
+5. Pipes:
+  Built-in-pipes such as date, currency, uppercase, lowercase and number, custom
+  pipes.
+
+=============================================================================
+
+6. Components Comunications:
+  Input and ouput, parent-child relationships, reusable components and event
+  handling.
+
+=============================================================================
+
+7. Services and Dependency injection:
+  @Injectable, providedIn, inject(), service responsibilities and dependency
+  injection.
+
+=============================================================================
+
+8. HTTP and RxJS:
+  HttpClient, GET/POST/PUT/DELETE, Observable, subscribe, pipe, map, catchError
+  and loading states.
+
+=============================================================================
+
+9. Routing:
+  Routes, RouterOutlet, RouterLink, route parameters,navigation and lazy
+  loading.
+
+=============================================================================
+
+10. Forms and Validation:
+Template-driven forms, reactive forms, FormGroup, FormControl and validators.
+
+=============================================================================
+
+11. Lifecycle and Change detection:
+  ngOnInit, ngOnChanges, ngOnDestroy, component destruction and rendering
+  behaviour.
+
+=============================================================================
+
+12. Security, testing and build:
+  Authentication integration, route guards, HTTP interceptors, component/service
+  testing, environement configuration and production builds.
+
+=============================================================================
