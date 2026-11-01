@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {HelpService} from './services/help-service';
 
 @Component({
@@ -9,21 +9,21 @@ import {HelpService} from './services/help-service';
 })
 export class App {
     private readonly helpService = inject(HelpService);
-    helpMessage = '';
-    errorMessage = '';
-    accessToken = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqU0RWWUZlMF9Xek1sUGlRSGo2TlkzajljNWh1WEViMDJ6TjZwZUZNMDFRIn0.eyJleHAiOjE3OTMxOTc3NTMsImlhdCI6MTc5MzE5NTk1MywianRpIjoib25ydHJvOjZlMDQ4Njc3LTBiZjgtNWIxYi1hMzU2LTA3MTZjOTI0MzNhNyIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODE4MC9yZWFsbXMvbWljcm9zZXJ2aWNlcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzYTNhZGNlZS04ZDY0LTQ1ODctOTM4Yi1mMDFmYTMwN2FiMGIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJtaWNyb3NlcnZpY2VzLWNsaWVudCIsInNpZCI6Ild0aTVSWHY1YUhJbWpWU0NzYWtIOUJKeCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1taWNyb3NlcnZpY2VzIiwib2ZmbGluZV9hY2Nlc3MiLCJBRE1JTiIsIlVTRVIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6InRlc3QgdGVzdCIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3R1c2VyIiwiZ2l2ZW5fbmFtZSI6InRlc3QiLCJmYW1pbHlfbmFtZSI6InRlc3QiLCJlbWFpbCI6InRlc3RAbm9lbWFpbC5jb20ifQ.DlpcYwd-6d1BoOqTRkxZR9QK0oQb38403IJuWjWufjBq-HcxVrISWrMYZqAD2oeFaGoB3BRRFoNWG300bPI9vFm2CTRCH0T1A87vCs50I7YU2bj6GphfIRPziBHC7pxbpPTWe2eaCKMXBoOQ4EfEGgDVAtif8oP-Ta0JQ3o8WHgq6VAvXF0bbb3NWgt8pGfxpBoKfLY7pD0-mBoCP1rIFMz6jhvRnU2XyWhqccw0Bxsg9iL1SObzofIk5ZsfRXuqVZ2N68skvV1Hg43RUvqrX2C-r_5vmwLyC4iQx8IYTO6zWDqtX3AOIhA8aQD52B4vjCt9roFP06Zfctaf67v-fQ';
+    helpMessage = signal<string>('');
+    errorMessage = signal<string>('');
+    accessToken = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqU0RWWUZlMF9Xek1sUGlRSGo2TlkzajljNWh1WEViMDJ6TjZwZUZNMDFRIn0.eyJleHAiOjE3OTM1MTg2MDQsImlhdCI6MTc5MzUxNjgwNCwianRpIjoib25ydHJvOjdjNDBkMWI3LTJhYzYtODc1ZC03ZWI1LWY0OTVjZjk0NjA3ZSIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODE4MC9yZWFsbXMvbWljcm9zZXJ2aWNlcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzYTNhZGNlZS04ZDY0LTQ1ODctOTM4Yi1mMDFmYTMwN2FiMGIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJtaWNyb3NlcnZpY2VzLWNsaWVudCIsInNpZCI6IkpOOGFIcUE1LWVISWticVVDRDAtQVdFRSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo0MjAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLW1pY3Jvc2VydmljZXMiLCJvZmZsaW5lX2FjY2VzcyIsIkFETUlOIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoidGVzdCB0ZXN0IiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHVzZXIiLCJnaXZlbl9uYW1lIjoidGVzdCIsImZhbWlseV9uYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEBub2VtYWlsLmNvbSJ9.CUyTmcfBNWQbToOy4He836l7zhSU8VKItiIic8RYA38valMfHMipX7YA8JSOfAwA0CM8PZo7KMCoFPRI76mRB8k1P9Fu8p7gCpWz6iXQ0KOydlFfL9fW2H9jH4hSq6LpTXWNbT0gANSuqhq7mzCIVDV65fMbct_ZIWPWVVXsg77ILIoaSce4Qsfje0Joq6uU7piXKdqH-VOrjUSiwj9vbawnR8MUlMXjXVfELXE03goWGVP-Cr8iXW-hCWKpNA9NtGs0obgvnjcZjPwbQDN-xSWVDPTwslPaRU2MxgcrnZc3LZuEAsRftWY--87BlIkip8RmZ2UuURAexSgktgLZHw';
 
     getHelpMessage(): void {
           console.log("Button Clicked");
-          this.helpMessage = '';
-          this.errorMessage = '';
+          this.helpMessage.set('');
+          this.errorMessage.set('');
 
           this.helpService.getMessage(this.accessToken).subscribe({
               next: (response) => {
-                  this.helpMessage = response;
+                  this.helpMessage.set(response)
               },
               error: (error) => {
-                  this.errorMessage = `API request failed: ${error.status} ${error.statusText}`;
+                  this.errorMessage.set(`API request failed: ${error.status} ${error.statusText}`);
               },
           });
       }

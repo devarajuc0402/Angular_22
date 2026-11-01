@@ -1,17 +1,17 @@
 <div>
-    <h1>Microservices UI</h1>
+    <h1>Java-Microservices-Angular-UI</h1>
     <h2>Help Service API</h2>
 
     <button (click)="getHelpMessage()">
       Get Help Message
     </button>
 
-    @if(helpMessage) {
-      <p>{{ helpMessage }}</p>
+    @if(helpMessage()) {
+      <p>Help Message: {{ helpMessage() }}</p>
     }
 
-    @if(errorMessage) {
-      <p>{{ errorMessage }}</p>
+    @if(errorMessage()) {
+      <p>Error Message: {{ errorMessage() }}</p>
     }
 
 </div>
