@@ -5,22 +5,54 @@
     <button (click)="getHelpMessage()">
       Get Help Message
     </button>
-
     @if(helpMessage()) {
       <p>Help Message: {{ helpMessage() }}</p>
     }
-
     @if(errorMessage()) {
       <p>Error Message: {{ errorMessage() }}</p>
     }
+    <br/>
+    <br/>
+
+    <button type="button" (click)="getHelpByRequestParamId()">
+      Get Help By Request Param Id
+    </button>
+    <input type="number" [(ngModel)]="helpRequestParamId" placeholder="Enter the Help Id"/>
+    @if(helpIdRequestResponse() != null) {
+      <pre>{{ helpIdRequestResponse() | json }}</pre>
+    }
+    <br/>
+    <br/>
+
+    <button type="button" (click)="getHelpByPathVariable()">
+      Get Help By Path Variable Id
+    </button>
+    <input type="number" [(ngModel)]="helpPathVariableId" placeholder="Enter the Help Id"/>
+    @if(helpIdPathResponse() != null) {
+      <pre>{{ helpIdPathResponse() | json }}</pre>
+    }
+    <br/>
+    <br/>
+
+    <button type="button" (click)="getHelpRange()">
+      Get Help By Start & End Id
+    </button>
+    <input type="number" [(ngModel)]="helpStartId" placeholder="Enter the Help Start Id"/>
+    <input type="number" [(ngModel)]="helpEndId" placeholder="Enter the Help End Id"/>
+    @if(helpIdLimitResponse() != null) {
+      <pre>{{ helpIdLimitResponse() | json }}</pre>
+    }
+    <br/>
+    <br/>
 
     <button (click)="getHelpList()">
       Get Help List
     </button>
-
     @if(helpList().length > 0) {
       <p>Help List: </p>
       <pre>{{ helpList() | json }}</pre>
     }
+    <br/>
+    <br/>
 
 </div>

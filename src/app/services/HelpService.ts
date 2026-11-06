@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable, inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HelpResponse} from './../model/HelpResponse';
@@ -19,6 +19,40 @@ export class HelpService {
             responseType: 'text',
             headers
         });
+    }
+
+    getHelpByRequestParamId(accessToken: string, helpId: number): Observable<HelpResponse[]> {
+
+      const headers = this.authHeaderService.getHeaders(accessToken);
+      const params = new HttpParams().set('helpId', helpId)
+      const endPoint = '/id';
+
+      return this.http.get<HelpResponse[]>(`${this.apiUrl}${endPoint}`, {
+        headers,
+        params
+      });
+    }
+
+    getHelpByPathVariable(accessToken: string, helpId: number): Observable<HelpResponse[]> {
+
+      const headers = this.authHeaderService.getHeaders(accessToken);
+      const endPoint = `/id/${helpId}`;
+
+      return this.http.get<HelpResponse[]>(`${this.apiUrl}${endPoint}`, {
+        headers
+      });
+    }
+
+    getHelpRange(accessToken: string, helpStartId: number, helpEndId: number): Observable<HelpResponse[]> {
+
+      const headers = this.authHeaderService.getHeaders(accessToken);
+      const params = new HttpParams().set('startHelpId', helpStartId).set('endHelpId', helpEndId)
+      const endPoint = `/id/range`;
+
+      return this.http.get<HelpResponse[]>(`${this.apiUrl}${endPoint}`, {
+        headers,
+        params
+      });
     }
 
     getHelpList(accessToken: string): Observable<HelpResponse[]> {
