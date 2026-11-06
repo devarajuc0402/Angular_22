@@ -14,4 +14,13 @@
       <p>Error Message: {{ errorMessage() }}</p>
     }
 
+    <button (click)="getHelpList()">
+      Get Help List
+    </button>
+
+    @if(helpList().length > 0) {
+      <p>Help List: </p>
+      <pre>{{ helpList() | json }}</pre>
+    }
+
 </div>
